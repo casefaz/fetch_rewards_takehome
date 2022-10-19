@@ -1,11 +1,7 @@
 class Api::V1::TransactionsController < ApplicationController
   def create
     new_transaction = Transaction.create!(transaction_params)
-    if new_transaction.save
-      render json: TransactionSerializer.new(new_transaction), status: :created
-    else
-      render status: 404
-    end
+    render json: TransactionSerializer.new(new_transaction), status: :created
   end
 
   private
