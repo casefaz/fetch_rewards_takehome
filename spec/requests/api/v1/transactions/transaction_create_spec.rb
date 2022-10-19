@@ -4,17 +4,17 @@ RSpec.describe 'Create new transaction', type: :request do
   context 'happy path' do
     it 'successfully creates a new transaction' do
       user = User.create!(name: 'Gil Pickles')
-      
+
       transaction_params = {
         payer: 'DANNON',
         points: 1000,
-        timestamp: Date.today,
         user_id: user.id
       }
+      headers = { 'CONTENT_TYPE' => 'application/json'}
 
       expect(user.transactions).to eq([])
 
-      post '/api/v1/transactions', params: JSON.generate(transaction: transaction_params)
+      post '/api/v1/transactions', headers: headers, params: JSON.generate(transaction: transaction_params)
       created_transaction = Transaction.last
 
       expect(response).to be_successful
