@@ -19,6 +19,17 @@ RSpec.describe 'Create new transaction', type: :request do
 
       expect(response).to be_successful
       expect(response).to have_http_status(201)
+
+      parsed_transaction = JSON.parse(response.body, symbolize_names: true)
+      # binding.pry
+      expect(parsed_transaction).to be_a(Hash)
+      expect(parsed_transaction[:data]).to have_key(:id)
+      expect(parsed_transaction[:data]).to have_key(:type)
+      expect(parsed_transaction[:data]).to have_key(:attributes)
+      expect(parsed_transaction[:data][:attributes]).to have_key(:payer)
+      expect(parsed_transaction[:data][:attributes]).to have_key(:points)
+      expect(parsed_transaction[:data][:attributes]).to have_key(:created_at)
+      expect(parsed_transaction[:data][:attributes]).to have_key(:user_id)
     end
   end
 end
