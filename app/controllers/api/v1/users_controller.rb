@@ -7,4 +7,8 @@ class Api::V1::UsersController < ApplicationController
       ]
     render json: differences
   end
+
+  def spend_points_params
+    params.permit(:points)
+  end
 end
