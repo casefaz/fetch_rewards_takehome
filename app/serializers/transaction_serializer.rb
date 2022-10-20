@@ -1,4 +1,4 @@
 class TransactionSerializer
   include JSONAPI::Serializer
-  attributes :payer, :points, :created_at, :user_id
+  attributes :payer, :points, :timestamp, :user_id
 end
