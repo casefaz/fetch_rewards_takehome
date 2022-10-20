@@ -5,6 +5,11 @@ class Transaction < ApplicationRecord
   validates_presence_of :timestamp
 
   def self.sort_by_date
+    # binding.pry
     order(:timestamp)
+  end
+
+  def self.points_balance
+    Transaction.group(:payer).sum(:points)
   end
 end
