@@ -8,7 +8,8 @@ RSpec.describe 'Create new transaction', type: :request do
       transaction_params = {
         payer: 'DANNON',
         points: 1000,
-        user_id: user.id
+        user_id: user.id,
+        timestamp: Time.now
       }
       headers = { 'CONTENT_TYPE' => 'application/json'}
 
@@ -29,7 +30,7 @@ RSpec.describe 'Create new transaction', type: :request do
       expect(parsed_transaction[:data]).to have_key(:attributes)
       expect(parsed_transaction[:data][:attributes]).to have_key(:payer)
       expect(parsed_transaction[:data][:attributes]).to have_key(:points)
-      expect(parsed_transaction[:data][:attributes]).to have_key(:created_at)
+      expect(parsed_transaction[:data][:attributes]).to have_key(:timestamp)
       expect(parsed_transaction[:data][:attributes]).to have_key(:user_id)
     end
   end

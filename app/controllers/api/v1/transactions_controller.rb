@@ -7,6 +7,6 @@ class Api::V1::TransactionsController < ApplicationController
   private
 
   def transaction_params
-    params.require(:transaction).permit(:payer, :points, :created_at, :user_id)
+    params.require(:transaction).permit(:payer, :points, :timestamp, :user_id)
   end
 end
