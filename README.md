@@ -1,24 +1,21 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## API Documentation
 
-Things you may want to cover:
+### Point Balances Endpoint
 
-* Ruby version
+#### Description
 
-* System dependencies
+A summation all points grouped by payers
 
-* Configuration
+#### get '/api/v1/point_balances'
 
-* Database creation
+request_body :{}
+response_body {
+  payer<string>: points<int>
+}
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+example 
+```
+{"UNILEVER":200, "DANNON":800}
+```
