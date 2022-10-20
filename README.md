@@ -20,7 +20,7 @@ example
 {"UNILEVER":200, "DANNON":800}
 ```
 
-### Spend Points Endpoint
+### Users Endpoint
 
 #### Description
 
