@@ -12,10 +12,10 @@ RSpec.describe 'User point spend' do
 
       spend_params = {"points": 5000}
 
-      post "/user/#{user.id}/spend", params: spend_params
+      post "/api/v1/users/#{user.id}/spend", params: spend_params
 
       expect(response).to be_successful
-      expect(response).to have_http_status(201)
+      expect(response).to have_http_status(200)
     end
   end
 end
