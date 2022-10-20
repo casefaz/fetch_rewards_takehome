@@ -12,6 +12,10 @@ RSpec.describe 'Point Balances Index' do
       get '/api/v1/payer_balances'
 
       expect(response).to be_successful
+
+      get_balances = JSON.parse(response.body, symbolize_names: true)
+
+      expect(get_balances).to eq({:UNILEVER=>200, :DANNON=>800})
     end
   end
 end
