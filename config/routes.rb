@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       post '/transactions', to: 'transactions#create'
+      get '/payer_balance', to: 'payer_balances#index'
     end
   end
 end
