@@ -19,7 +19,6 @@ class SpendPointsService
       difference = [pnts, trn.points].min
       trn.update!(points:(trn.points - difference))
       payer_differences[trn.payer] -= difference
-      # binding.pry
       pnts -= difference
       break if pnts == 0
       pnts

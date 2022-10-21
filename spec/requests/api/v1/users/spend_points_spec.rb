@@ -16,6 +16,20 @@ RSpec.describe 'User point spend' do
 
       expect(response).to be_successful
       expect(response).to have_http_status(200)
+
+      return_balances = JSON.parse(response.body, symbolize_names: true)
+      expect(return_balances).to be_a(Array)
+      
+      breakdown = return_balances.first
+      # binding.pry
+      expect(breakdown).to have_key(:payer)
+      expect(breakdown).to have_key(:points)
+    end
+  end
+
+  context 'sad path' do
+    xit 'doesnt work without passing points' do
+
     end
   end
 end
