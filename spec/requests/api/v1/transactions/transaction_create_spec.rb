@@ -51,7 +51,7 @@ RSpec.describe 'Create new transaction', type: :request do
 
       expect(user.transactions).to eq([])
       expect(response).to_not be_successful
-      expect(response).to have_http_status(404)
+      expect(response).to have_http_status(422)
     end
   end
 end

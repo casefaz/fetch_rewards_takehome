@@ -7,8 +7,4 @@ class Transaction < ApplicationRecord
   def self.sort_by_date
     order(:timestamp)
   end
-
-  def self.points_balance
-    Transaction.group(:payer).sum(:points)
-  end
 end
