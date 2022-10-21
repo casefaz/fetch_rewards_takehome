@@ -22,24 +22,5 @@ RSpec.describe Transaction, type: :model do
 
       expect(Transaction.sort_by_date).to eq([transaction5, transaction2, transaction3, transaction4, transaction1])
     end
-
-    xit 'spends points' do
-      # call the sort method
-      # for each day starting with the oldest day (ascending)
-        # group points by payer and add them together
-        # until the sum of the points == 5000 iterate through and set to 0
-        # set new values for payer points based on the point sum
-        # return should be each transaction with amount subtracted, if applicable
-        
-      # Recursion
-        # base case points = 0
-
-      expected = [
-        { "payer": "DANNON", "points": -100 },
-        { "payer": "UNILEVER", "points": -200 },
-        { "payer": "MILLER COORS", "points": -4_700 }
-        ]
-      expect(Transaction.spend_points(5000)).to eq(expected)
-    end
   end
 end
