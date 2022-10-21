@@ -21,14 +21,11 @@ RSpec.describe 'User point spend' do
       expect(return_balances).to be_a(Array)
       
       breakdown = return_balances.first
+
       expect(breakdown).to have_key(:payer)
       expect(breakdown).to have_key(:points)
-    end
-  end
-
-  context 'sad path' do
-    xit 'doesnt work without passing points' do
-
+      expect(breakdown[:payer]).to eq('DANNON')
+      expect(breakdown[:points]).to eq(-100)
     end
   end
 end
