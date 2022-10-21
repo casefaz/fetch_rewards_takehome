@@ -12,7 +12,7 @@ class SpendPointsService
       # subtract to payer_differences: the difference
       # break if points are 0
     payer_differences = Hash.new { |h,k,_v| h[k] = 0 }
-    transactions
+    Transaction.sort_by_date
     # .each_with_object(payer_differences)
     .reduce(points) do |pnts, trn|
       next if negative_payer_balance(trn)
@@ -23,12 +23,12 @@ class SpendPointsService
       break if pnts == 0
       pnts
     end
-    payer_differences.map { |k,v| {payer: k, points: v}}
+    payer_differences.map { |k,v| {payer: k, points: v} }
   end
 
-  def self.transactions
-    Transaction.where('points > 0')
-  end
+  # def self.transactions
+  #   Transaction.order(:timestamp)
+  # end
 
   def self.negative_payer_balance(transaction)
     false

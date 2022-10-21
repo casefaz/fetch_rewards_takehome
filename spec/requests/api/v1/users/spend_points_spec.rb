@@ -21,7 +21,6 @@ RSpec.describe 'User point spend' do
       expect(return_balances).to be_a(Array)
       
       breakdown = return_balances.first
-      # binding.pry
       expect(breakdown).to have_key(:payer)
       expect(breakdown).to have_key(:points)
     end
