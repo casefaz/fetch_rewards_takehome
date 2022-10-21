@@ -1,6 +1,7 @@
 class SpendPointsService
   # adding a colon after points makes it required (keyword argument with no default)
   def self.call(points:)
+    # binding.pry
     # grab all the transactions that aren't negative (ordered by timestamp)
     # reduce (iterate) over them with a hash with default of zero payer_differences
     # for each element
