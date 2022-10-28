@@ -6,7 +6,7 @@ class SpendPointsService
     # reduce (iterate) over them with a hash with default of zero payer_differences
     # for each element
       # guard against negative payer balance
-      # next unless the total -  for payer is positive
+      # next unless the total -  for payer is positive - keeps the payer balance from going negative
       # points - balance down to: points >= 0
       # update line item with new value - which should be 0
       # subtract to payer_differences: the difference
@@ -16,6 +16,7 @@ class SpendPointsService
     .reduce(points) do |pnts, trn|
       next if negative_payer_balance(trn)
       difference = [pnts, trn.points].min
+      # binding.pry
       trn.update!(points:(trn.points - difference))
       payer_differences[trn.payer] -= difference
       pnts -= difference

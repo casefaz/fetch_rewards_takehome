@@ -7,8 +7,8 @@ RSpec.describe SpendPointsService do
     transaction3 = Transaction.create!(payer: "DANNON", points: 200, timestamp: "2020-10-31T15:00:00Z", user_id: user.id)
 
     expected = [
-      {"payer": "UNILEVER", "points": -200},
-      {"payer": "DANNON", "points": -100}
+      {:payer=>"DANNON", :points=>-100}, 
+      {:payer=>"UNILEVER", :points=>-200}
     ]
     expect(described_class.(points:300)).to eq(expected)
   end

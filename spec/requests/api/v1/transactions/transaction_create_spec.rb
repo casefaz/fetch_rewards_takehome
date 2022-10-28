@@ -24,6 +24,7 @@ RSpec.describe 'Create new transaction', type: :request do
 
       parsed_transaction = JSON.parse(response.body, symbolize_names: true)
 
+      # binding.pry
       expect(parsed_transaction).to be_a(Hash)
       expect(parsed_transaction[:data]).to have_key(:id)
       expect(parsed_transaction[:data]).to have_key(:type)
